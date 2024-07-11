@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Web App</title>
+  <style>
+    /* CSS styles for the layout */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    
+    .sidenav {
+      width: 200px;
+      height: 100%;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #f1f1f1;
+      overflow-x: hidden;
+      padding-top: 20px;
+      transition: 0.5s;
+    }
+    
+    .sidenav .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .logo{
+        height: .fixed;
+    }
+    
+    .sidenav a {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #818181;
+      display: inline-block;
+      margin-right: 20px;
+    }
+    
+    .sidenav a:hover {
+      color: #000;
+    }
+    
+    .sidenav .closebtn {
+      display: none;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+    
+    .main {
+      padding: 20px;
+      transition: 0.5s;
+      margin-left: 220px;
+    }
+    
+    .menu-icon {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 16px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 2;
+    }
+    
+    .menu-icon::before {
+      content: "\2630"; /* Unicode character for 'Hamburger' */
+    }
+    
+    .menu-icon.close-icon::before {
+      content: "\2715"; /* Unicode character for 'X' */
+    }
+    
+    @media (max-width: 767px) {
+      .sidenav {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding-top: 0;
+      }
+      
+      .sidenav .logo {
+        text-align: left;
+        padding: 16px;
+        margin-bottom: 0;
+        display: inline-block;
+        width: auto;
+        background-color: #f1f1f1;
+        z-index: 2;
+      }
+      
+      .sidenav a {
+        display: none;
+        padding: 8px 16px;
+        margin-right: 20px;
+      }
+      
+      .sidenav .closebtn {
+        display: none;
+      }
+      
+      .main {
+        padding: 20px;
+        transition: 0.5s;
+        margin-left: 0;
+      }
+      
+      .menu-icon {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sidenav" id="mySidenav">
+    <div class="logo">
+      <img src="logo.png" alt="Logo" width="120" height="40">
+    </div>
+    <a href="#">Home</a>
+    <a href="#">Navigate</a>
+    <a href="#">Forecast</a>
+  </div>
+  
+  <div class="menu-icon" onclick="toggleSidenav()"></div>
+  
+  <div class="main">
+    <h1>Welcome to My Web App</h1>
+    <p>This is the main content area.</p>
+    <!-- Add more content here -->
+  </div>
+  
+  <script>
+    // JavaScript code to toggle the side navigation on mobile
+    function toggleSidenav() {
+      var sidenav = document.getElementById("mySidenav");
+      var navLinks = sidenav.getElementsByTagName("a");
+      var menuIcon = document.querySelector(".menu-icon");
+
+      if (sidenav.style.height === "auto" || sidenav.style.height === "") {
+        sidenav.style.height = "0";
+        for (var i = 0; i < navLinks.length; i++) {
+          navLinks[i].style.display = "none";
+        }
+        menuIcon.classList.remove("close-icon");
+      } else {
+        sidenav.style.height = "auto";
+        for (var j = 0; j < navLinks.length; j++) {
+          navLinks[j].style.display = "inline-block";
+        }
+        menuIcon.classList.add("close-icon");
+      }
+    }
+  </script>
+</body>
+</html>
